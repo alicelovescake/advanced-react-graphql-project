@@ -1,12 +1,27 @@
-type User {
+# Public facing api that we interface with our javascript. prisma graphql has everything
+# advanced logic for mutation and query happens in resolver files
+# import * from './generated/prisma.graphql'
+
+type Item implements Node {
   id: ID!
-  name: String!
+  description: String!
+  image: String!
+  title: String
+  largeImage: String
+  price: Int!
 }
 
 type Mutation {
-  hi: String
+  # can abstract out all the arguments as data: ItemCreateInput (which is input object with all the parameters), reusable and passing 1 object as arugment instead of multiple arguements
+  createItem(
+    title: String
+    description: String
+    price: Int
+    image: String
+    largeImage: String
+  ): Item!
 }
 
 type Query {
-  hi: String
+  items: [Item]!
 }

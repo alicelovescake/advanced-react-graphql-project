@@ -1,5 +1,22 @@
+# add new type in data model here
+# schema for prisma and the database that lives underneath prisma
+# have to restart server every time there is change
+# brings down a new copy of prisma.graphql with all queries and mutations and all possible filters
+
 type User {
   id: ID! @id
   name: String!
   email: String!
+}
+
+type Item {
+  id: ID! @unique @id
+  description: String!
+  image: String!
+  title: String
+  largeImage: String
+  price: Int!
+  # createdAt: DateTime! @createdAt
+  # updatedAt: DateTime! @updatedAt
+  # user: User!
 }
